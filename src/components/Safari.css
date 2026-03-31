@@ -1,0 +1,187 @@
+/* SafariSeries.css */
+.safari-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.safari-hero {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  padding: 4rem 2rem;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.safari-hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: slideDown 0.5s ease;
+}
+
+.safari-hero-content p {
+  font-size: 1.2rem;
+  animation: slideDown 0.5s ease 0.2s backwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.episodes-list {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem;
+}
+
+.episode-card {
+  background: white;
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInLeft 0.5s ease;
+}
+
+.episode-card:hover {
+  transform: translateX(10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.episode-number {
+  font-size: 2rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  min-width: 100px;
+}
+
+.episode-info {
+  flex: 1;
+}
+
+.episode-info h3 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.episode-host,
+.episode-duration {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.episode-description {
+  color: #777;
+  line-height: 1.5;
+}
+
+.episode-thumbnail {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.episode-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Modal styles for Safari */
+.safari-modal .modal-header {
+  position: relative;
+  height: 300px;
+}
+
+.safari-modal .modal-header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-header-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  color: white;
+  padding: 2rem;
+}
+
+.episode-badge {
+  display: inline-block;
+  background: rgba(245, 87, 108, 0.9);
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.episode-details {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.watch-now-btn {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.watch-now-btn:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .episodes-list {
+    padding: 1rem;
+  }
+  
+  .episode-card {
+    flex-direction: column;
+  }
+  
+  .episode-thumbnail {
+    width: 100%;
+    height: 200px;
+  }
+  
+  .episode-number {
+    font-size: 1.5rem;
+  }
+}

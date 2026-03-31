@@ -1,0 +1,256 @@
+/* DailyDevotions.css */
+.devotions-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+.devotions-hero {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  padding: 4rem 2rem;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.devotions-hero::before {
+  content: '✝️';
+  position: absolute;
+  font-size: 200px;
+  opacity: 0.1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(10deg);
+  }
+}
+
+.devotions-hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  position: relative;
+  animation: bounceIn 0.8s ease;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.today-date {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  background: rgba(255,255,255,0.2);
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+}
+
+.devotions-list {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem;
+}
+
+.devotion-card {
+  background: white;
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.5s ease;
+}
+
+.devotion-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.devotion-date {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.devotion-content {
+  padding: 1.5rem;
+}
+
+.devotion-content h3 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.devotion-scripture {
+  color: #fa709a;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.devotion-message {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.devotion-author {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.devotion-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.devotion-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.devotion-card:hover .devotion-image img {
+  transform: scale(1.05);
+}
+
+/* Devotion Modal */
+.devotion-modal {
+  background: white;
+  border-radius: 20px;
+  max-width: 700px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+.devotion-modal-header {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  padding: 2rem;
+  color: white;
+  text-align: center;
+}
+
+.devotion-modal-date {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-bottom: 0.5rem;
+}
+
+.devotion-modal-header h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.devotion-modal-scripture {
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+.devotion-modal-body {
+  padding: 2rem;
+}
+
+.devotion-full-message {
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.devotion-reflection,
+.devotion-prayer {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.devotion-reflection h4,
+.devotion-prayer h4 {
+  color: #fa709a;
+  margin-bottom: 0.5rem;
+}
+
+.devotion-author-full {
+  margin-top: 1rem;
+  text-align: right;
+  color: #999;
+  font-style: italic;
+}
+
+.devotion-modal-footer {
+  padding: 1rem 2rem 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.share-btn,
+.save-btn {
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: transform 0.2s ease;
+}
+
+.share-btn {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  color: white;
+}
+
+.save-btn {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.share-btn:hover,
+.save-btn:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .devotions-list {
+    padding: 1rem;
+  }
+  
+  .devotion-modal-header h2 {
+    font-size: 1.3rem;
+  }
+  
+  .devotion-full-message {
+    font-size: 1rem;
+  }
+}
