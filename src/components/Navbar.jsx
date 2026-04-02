@@ -85,13 +85,6 @@ const Navbar = () => {
 
           {/* Navigation Links */}
           <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-            <button 
-              className="mobile-close-btn" 
-              onClick={() => setIsMenuOpen(false)}
-              aria-label="Close menu"
-            >
-              ✕
-            </button>
             {navItems.map((item, index) => (
               <Link
                 key={item.name}
