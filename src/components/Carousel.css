@@ -26,7 +26,11 @@
   overflow: hidden;
 }
 
+<<<<<<< HEAD
 /* FIXED: Removed opacity and visibility - now uses only transform */
+=======
+/* Fixed: Removed opacity/visibility - now uses only transform */
+>>>>>>> eaab2157b5518acd06d04ab2716a4b3f55c18122
 .carousel-slide {
   position: absolute;
   top: 0;
@@ -71,7 +75,11 @@
   backdrop-filter: blur(2px);
 }
 
+<<<<<<< HEAD
 /* FIXED: Only show overlay on active slide */
+=======
+/* Fixed: Using transform on active slide overlay */
+>>>>>>> eaab2157b5518acd06d04ab2716a4b3f55c18122
 .carousel-slide.active .slide-overlay {
   transform: translateY(0);
 }
