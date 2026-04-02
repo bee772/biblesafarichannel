@@ -19,7 +19,6 @@ const Carousel = () => {
       message: "Explore verse-by-verse Bible studies with Christian context",
       buttonText: "Start Studying",
       path: "/studies",
-      
     },
     { 
       id: 2, 
@@ -29,7 +28,6 @@ const Carousel = () => {
       message: "Discover God by journeying through the Bible",
       buttonText: "Join Safari",
       path: "/safari",
-     
     },
     { 
       id: 3, 
@@ -39,7 +37,6 @@ const Carousel = () => {
       message: "Watch engaging video teachings from credible sources",
       buttonText: "Watch Now",
       path: "/videos",
-     
     },
     { 
       id: 4, 
@@ -49,7 +46,6 @@ const Carousel = () => {
       message: "Start your day with deeply-inspired devotions",
       buttonText: "Read Today",
       path: "/devotions",
-    
     },
     { 
       id: 5, 
@@ -59,7 +55,6 @@ const Carousel = () => {
       message: "Learn about our mission to share the Gospel through God's eyes",
       buttonText: "Discover More",
       path: "/about",
-      
     },
     { 
       id: 6, 
@@ -69,7 +64,6 @@ const Carousel = () => {
       message: "Have questions? We'd love to hear from you",
       buttonText: "Get in Touch",
       path: "/contact",
-      
     },
   ];
 
@@ -156,6 +150,10 @@ const Carousel = () => {
                   alt={slide.alt}
                   className="slide-image"
                   loading={index === 0 ? "eager" : "lazy"}
+                  onError={(e) => {
+                    console.error(`Failed to load image: ${slide.src}`);
+                    e.target.src = "https://via.placeholder.com/1200x600?text=Image+Not+Found";
+                  }}
                 />
                 
                 {/* Enhanced overlay with message and navigation */}
