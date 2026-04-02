@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const location = useLocation();
+  const navigate = useNavigate();
 
   const navItems = [
     { name: 'Home', path: '/', icon: '🏠' },
@@ -43,67 +45,86 @@ const Navbar = () => {
     };
   }, [isMenuOpen]);
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const query = searchQuery.trim();
+    if (query) {
+      navigate(`/search?q=${encodeURIComponent(query)}`);
+      setSearchQuery('');
+      setIsMenuOpen(false);
+    }
+  };
+
   return (
-    <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
-      <div className="navbar-container">
-        {/* Logo */}
-        <Link to="/" onClick={() => setIsMenuOpen(false)}>
-          <img 
-            src="/images/Logo.png" 
-            alt="Bible Safari Channel" 
-            className="navbar-logo"
-            loading="eager"
-          />
-        </Link>
-        
-        {/* Mobile Menu Button */}
-        <button 
-          className="menu-toggle" 
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={isMenuOpen}
-        >
-          <span className={`hamburger ${isMenuOpen ? 'active' : ''}`}>
-            <span className="bar"></span>
-            <span className="bar"></span>
-            <span className="bar"></span>
-          </span>
-        </button>
-
-        {/* Navigation Links */}
-        <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-          {navItems.map((item, index) => (
-            <Link
-              key={item.name}
-              to={item.path}
-              className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}
-              style={{ '--i': index }}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <span className="nav-icon" role="img" aria-label={item.name}>
-                {item.icon}
-              </span>
-              <span className="nav-text">{item.name}</span>
-            </Link>
-          ))}
-        </div>
-
-        {/* Search and Action Buttons */}
-        <div className="nav-actions">
-          <div className="search-container">
-            <input 
-              type="text" 
-              className="search-input" 
-              placeholder="Search scriptures..."
-              aria-label="Search scriptures"
+    <>
+      <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
+        <div className="navbar-container">
+          {/* Logo */}
+          <Link to="/" onClick={() => setIsMenuOpen(false)}>
+            <img 
+              src="/images/Logo.png" 
+              alt="Bible Safari Channel" 
+              className="navbar-logo"
+              loading="eager"
             />
-            <button className="search-btn" aria-label="Search">
-              <span role="img" aria-hidden="true">🔍</span>
-            </button>
+          </Link>
+          
+          {/* Mobile Menu Button */}
+          <button 
+            className="menu-toggle" 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
+          >
+            <span className={`hamburger ${isMenuOpen ? 'active' : ''}`}>
+              <span className="bar"></span>
+              <span className="bar"></span>
+              <span className="bar"></span>
+            </span>
+          </button>
+
+          {/* Navigation Links */}
+          <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+            {navItems.map((item, index) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}
+                style={{ '--i': index }}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <span className="nav-icon" role="img" aria-label={item.name}>
+                  {item.icon}
+                </span>
+                <span className="nav-text">{item.name}</span>
+              </Link>
+            ))}
+          </div>
+
+          {/* Search and Action Buttons */}
+          <div className="nav-actions">
+            <form className="search-container" onSubmit={handleSearch}>
+              <input 
+                type="text" 
+                className="search-input" 
+                placeholder="Search scriptures..."
+                aria-label="Search scriptures"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <button type="submit" className="search-btn" aria-label="Search">
+                <span role="img" aria-hidden="true">🔍</span>
+              </button>
+            </form>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+      
+      {/* Overlay for mobile menu */}
+      {isMenuOpen && (
+        <div className="nav-overlay active" onClick={() => setIsMenuOpen(false)}></div>
+      )}
+    </>
   );
 };
 

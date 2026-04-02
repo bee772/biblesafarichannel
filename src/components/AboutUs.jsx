@@ -1,7 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./about.css";
 
 const About = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="about-section">
       <div className="about-container">
@@ -58,7 +61,7 @@ const About = () => {
           <div className="about-card">
             <h3>🔥 Our Calling</h3>
             <p>
-              To awaken hearts, renew minds, and ignite a deeper hunger for God’s
+              To awaken hearts, renew minds, and ignite a deeper hunger for God's
               presence through consistent teaching, prayer, and encouragement.
             </p>
           </div>
@@ -124,7 +127,7 @@ const About = () => {
             with God, Bible Safari Channel is here to walk with you every step of
             the way.
           </p>
-          <button>Explore Teachings</button>
+          <button onClick={() => navigate("/studies")}>Explore Teachings</button>
         </div>
 
       </div>

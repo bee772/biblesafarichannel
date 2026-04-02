@@ -1,59 +1,67 @@
 .about-section {
   background: #0c3a2d;
   color: #fff;
-  padding: 100px 20px;
+  padding: clamp(40px, 10vw, 100px) clamp(15px, 5vw, 20px);
+  min-height: 100vh;
 }
 
 .about-container {
   max-width: 1100px;
   margin: auto;
+  width: 100%;
 }
 
 /* HERO */
 .about-hero {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: clamp(30px, 8vw, 60px);
 }
 
 .about-hero h1 {
-  font-size: 3rem;
+  font-size: clamp(1.8rem, 6vw, 3rem);
   color: gold;
+  margin-bottom: 15px;
 }
 
 .about-hero p {
-  font-size: 1.2rem;
+  font-size: clamp(0.9rem, 3vw, 1.2rem);
   opacity: 0.9;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 /* BLOCK */
 .about-block {
-  margin-bottom: 60px;
+  margin-bottom: clamp(30px, 8vw, 60px);
 }
 
 .about-block h2 {
   color: gold;
   margin-bottom: 15px;
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
 }
 
 .about-block p {
   line-height: 1.8;
   margin-bottom: 15px;
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
 }
 
 /* GRID */
 .about-grid {
   display: flex;
-  gap: 20px;
+  gap: clamp(15px, 3vw, 20px);
   flex-wrap: wrap;
-  margin-bottom: 60px;
+  margin-bottom: clamp(30px, 8vw, 60px);
 }
 
 .about-card {
   background: #1a5c48;
-  padding: 25px;
+  padding: clamp(20px, 4vw, 25px);
   border-radius: 12px;
   flex: 1;
-  min-width: 250px;
+  min-width: 220px;
   transition: 0.3s;
 }
 
@@ -63,17 +71,44 @@
   color: #0c3a2d;
 }
 
+.about-card h3 {
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  margin-bottom: 12px;
+}
+
+.about-card p {
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  line-height: 1.6;
+}
+
 /* FEATURES */
 .about-features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  gap: clamp(15px, 3vw, 20px);
 }
 
 .feature {
   background: #1a5c48;
-  padding: 20px;
+  padding: clamp(15px, 4vw, 20px);
   border-radius: 10px;
+  transition: 0.3s;
+}
+
+.feature:hover {
+  transform: translateY(-3px);
+  background: gold;
+  color: #0c3a2d;
+}
+
+.feature h4 {
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  margin-bottom: 10px;
+}
+
+.feature p {
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  line-height: 1.5;
 }
 
 /* VALUES */
@@ -83,21 +118,139 @@
 }
 
 .values li {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  padding-left: 20px;
+  position: relative;
+}
+
+.values li::before {
+  content: "✓";
+  color: gold;
+  position: absolute;
+  left: 0;
 }
 
 /* CTA */
 .about-cta {
   text-align: center;
-  margin-top: 60px;
+  margin-top: clamp(30px, 8vw, 60px);
+}
+
+.about-cta h2 {
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  margin-bottom: 15px;
+}
+
+.about-cta p {
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  margin-bottom: 25px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .about-cta button {
   background: gold;
   color: #0c3a2d;
   border: none;
-  padding: 12px 25px;
+  padding: clamp(10px, 3vw, 12px) clamp(20px, 5vw, 25px);
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  transition: all 0.3s ease;
+}
+
+.about-cta button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+/* ==================== RESPONSIVE BREAKPOINTS ==================== */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 50px 20px;
+  }
+  
+  .about-grid {
+    flex-direction: column;
+  }
+  
+  .about-card {
+    min-width: 100%;
+  }
+  
+  .about-card:hover {
+    transform: translateX(5px);
+  }
+  
+  .about-features {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .about-section {
+    padding: 40px 15px;
+  }
+  
+  .about-hero {
+    margin-bottom: 35px;
+  }
+  
+  .about-hero h1 {
+    font-size: 1.6rem;
+  }
+  
+  .about-block {
+    margin-bottom: 35px;
+  }
+  
+  .about-block h2 {
+    font-size: 1.3rem;
+  }
+  
+  .values li {
+    padding-left: 18px;
+  }
+  
+  .about-cta {
+    margin-top: 35px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 379px) {
+  .about-section {
+    padding: 30px 12px;
+  }
+  
+  .about-card {
+    padding: 15px;
+  }
+  
+  .feature {
+    padding: 12px;
+  }
+}
+
+/* Touch-friendly */
+@media (hover: none) {
+  .about-card:hover,
+  .feature:hover {
+    transform: none;
+  }
+  
+  .about-card:active,
+  .feature:active {
+    transform: scale(0.99);
+  }
+  
+  .about-cta button:active {
+    transform: scale(0.98);
+  }
 }
