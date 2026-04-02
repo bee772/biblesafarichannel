@@ -33,9 +33,9 @@ const Navbar = () => {
     setIsMenuOpen(false);
   }, [location.pathname]);
 
-  // Prevent body scroll when menu is open
+  // Prevent body scroll when menu is open (only on mobile where overlay exists)
   useEffect(() => {
-    if (isMenuOpen) {
+    if (isMenuOpen && window.innerWidth <= 768) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -60,7 +60,7 @@ const Navbar = () => {
       <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
         <div className="navbar-container">
           {/* Logo */}
-          <Link to="/" onClick={() => setIsMenuOpen(false)}>
+          <Link to="/" onClick={() => setIsMenuOpen(false)} className="navbar-logo-link">
             <img 
               src="/images/Logo.png" 
               alt="Bible Safari Channel" 
@@ -69,7 +69,7 @@ const Navbar = () => {
             />
           </Link>
           
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - only visible on tablet/mobile */}
           <button 
             className="menu-toggle" 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -83,22 +83,24 @@ const Navbar = () => {
             </span>
           </button>
 
-          {/* Navigation Links */}
-          <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-            {navItems.map((item, index) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}
-                style={{ '--i': index }}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <span className="nav-icon" role="img" aria-label={item.name}>
-                  {item.icon}
-                </span>
-                <span className="nav-text">{item.name}</span>
-              </Link>
-            ))}
+          {/* Navigation Links - with horizontal scroll on desktop/tablet when needed */}
+          <div className={`nav-links-wrapper ${isMenuOpen ? 'mobile-open' : ''}`}>
+            <div className="nav-links">
+              {navItems.map((item, index) => (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}
+                  style={{ '--i': index }}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <span className="nav-icon" role="img" aria-label={item.name}>
+                    {item.icon}
+                  </span>
+                  <span className="nav-text">{item.name}</span>
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* Search and Action Buttons */}
