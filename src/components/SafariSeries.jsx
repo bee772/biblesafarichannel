@@ -101,7 +101,7 @@ const SafariSeries = () => {
                   ></iframe>
                 </div>
               )}
-              <button className="watch-now-btn">Watch Full Episode →</button>
+              
             </div>
           </div>
         </div>
